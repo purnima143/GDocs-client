@@ -10,7 +10,7 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import moment from 'moment'
 
-const baseURL = "http://localhost:9000";
+const baseURL = `${process.env.REACT_APP_DB_URL}`;
 
 function Home() {
     let navigate = useNavigate();
