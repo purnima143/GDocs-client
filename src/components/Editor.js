@@ -5,6 +5,8 @@ import { io } from 'socket.io-client'
 import { useParams } from 'react-router-dom'
 import Container from 'react-bootstrap/Container'
 import Header from './Header'
+const baseURL = `${process.env.REACT_APP_DB_URL}`;
+const clientURL = 'https://gdocs-0lmi.onrender.com/'
 function Editor() {
     const [socket, setSocket] = useState()
     const [quill, setQuill] = useState()
@@ -43,7 +45,7 @@ function Editor() {
 
     const handleCopyClick = () => {
 
-        let copyurl = `http://localhost:3000/docs/${fileName}/${id}`
+        let copyurl = `${clientURL}/docs/${fileName}/${id}`
 
         copyTextToClipboard(copyurl)
             .then(() => {
@@ -70,7 +72,7 @@ function Editor() {
     }, []);
 
     useEffect(() => {
-        const socketServer = io('http://localhost:9000')
+        const socketServer = io(baseURL)
         setSocket(socketServer)
         return () => {
             socketServer.disconnect();
