@@ -10,7 +10,7 @@ const baseURL = `${process.env.REACT_APP_DB_URL}`;
 function Login() {
     let navigate = useNavigate();
     const [profile, setProfile] = useState([]);
-    const clientId = '386932037035-k8v833noqjk7m4auae0t83vnkrqvvg3t.apps.googleusercontent.com';
+    const clientId = '511409920344-vo1djfu0s7brq3f00atui6q2d67mogk6.apps.googleusercontent.com';
     useEffect(() => {
         const initClient = () => {
             gapi.client.init({
