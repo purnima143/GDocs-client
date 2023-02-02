@@ -7,12 +7,15 @@ import Container from 'react-bootstrap/Container'
 import Header from './Header'
 const baseURL = `${process.env.REACT_APP_DB_URL}`;
 const clientURL = 'https://gdocs-0lmi.onrender.com'
+let username = null
 function Editor() {
-    const [socket, setSocket] = useState()
-    const [quill, setQuill] = useState()
+    // const [username, setUsername] = useState("purnima");
+    const [socket, setSocket] = useState();
+    const [quill, setQuill] = useState();
     const [isCopied, setIsCopied] = useState(false);
-    const { id, fileName } = useParams()
+    const { id, fileName } = useParams();
     const componentRef = useRef();
+    username = localStorage.getItem('email')
 
     const toolbarOptions = [
         ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
@@ -103,13 +106,14 @@ function Editor() {
     }, [quill, socket])
 
     useEffect(() => {
-        if (quill == null || socket == null) return
-        socket && socket.once('load-document', (document) => {
-            quill && quill.setContents(document)
-            quill && quill.enable()
-        })
-        socket && socket.emit('get-document', id, fileName)
-    }, [quill, socket, id])
+        if (quill == null || socket == null) return;
+        socket &&
+            socket.once("load-document", (document) => {
+                quill && quill.setContents(document);
+                quill && quill.enable();
+            });
+        socket && socket.emit("get-document", id, fileName, username);
+    }, [quill, socket, id]);
 
 
     useEffect(() => {
