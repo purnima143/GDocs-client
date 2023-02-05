@@ -132,9 +132,7 @@
 }
 
 .loginpage {
-  background: linear-gradient(50deg, #20c996c1, rgba(0, 0, 0, 0.717)),
-    url("assets/bg.jpg");
-  background-size: cover;
+  background:#20c997;
   height: 100vh;
   width: 100vw;
 }
