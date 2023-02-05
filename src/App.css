@@ -72,6 +72,10 @@
   .form-box {
     flex-direction: column;
   }
+  .inputarea {
+  width: 100% !important;
+  
+}
 }
 .home {
   min-height: 100vh;
@@ -162,7 +166,7 @@
 }
 
 .inputarea {
-  width: 300px !important;
+  width: 50% !important;
   border: 1px solid lightgrey;
   border-radius: 7px;
   padding: 0 10px;
