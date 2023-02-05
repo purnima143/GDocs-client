@@ -5,6 +5,9 @@ import { v4 as uuid } from "uuid";
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
 import axios from "axios";
+import Nav from 'react-bootstrap/Nav';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Navbar from 'react-bootstrap/Navbar';
 import Form from "react-bootstrap/Form";
 import Logo from "../assets/gdocsLogo.png";
 import Container from "react-bootstrap/esm/Container";
@@ -52,31 +55,36 @@ function Home({ logOutbutton, profile }) {
 
     return (
         <>
+
             <div className="home">
-                <div className="header" >
-                    <Container className="form-container p-0">
-                        <div className="logo-header">
-                            <img src={Logo} alt="GDocs" />
-                            <h2>GDocs</h2>
-                        </div>
-                        <div className="header-right">
+                <Navbar collapseOnSelect sticky="top" expand="lg" style={{ background: "white", padding: "1rem" }}>
+                    <Container>
+                        <Navbar.Brand href=""><img src={Logo} alt="GDocs" className='logo' />GDocs</Navbar.Brand>
+                        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+                        <Navbar.Collapse id="responsive-navbar-nav">
+                            <Nav className="me-auto">
 
-                            {logOutbutton}
-                            <OverlayTrigger
-                                key='bottom'
-                                placement='bottom'
-                                overlay={
-                                    <Tooltip id={`tooltip-bottom`}>
-                                        Hi, {name}
-                                    </Tooltip>
-                                }
-                            >
-                                <img src={pic} alt="" className="profilepic" />
-                            </OverlayTrigger>
-                        </div>
+                            </Nav>
+                            <Nav>
+                                {logOutbutton}
+                            </Nav>
 
+                            <Nav>
+                                <OverlayTrigger
+                                    key='bottom'
+                                    placement='bottom'
+                                    overlay={
+                                        <Tooltip id={`tooltip-bottom`}>
+                                            Hi, {name}
+                                        </Tooltip>
+                                    }
+                                >
+                                    <img src={pic} alt="" className="profilepic" />
+                                </OverlayTrigger>
+                            </Nav>
+                        </Navbar.Collapse>
                     </Container>
-                </div>
+                </Navbar>
                 <Form.Group className="form-box container mt-4">
 
                     <Form.Control
