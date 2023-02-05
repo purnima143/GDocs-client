@@ -73,9 +73,8 @@
     flex-direction: column;
   }
   .inputarea {
-  width: 100% !important;
-  
-}
+    width: 100% !important;
+  }
 }
 .home {
   min-height: 100vh;
@@ -132,7 +131,7 @@
 }
 
 .loginpage {
-  background:white;
+  background: white;
   height: 100vh;
   width: 100vw;
 }
@@ -148,7 +147,7 @@
 .loginbutton {
   font-size: 20px !important;
   padding: 0px 10px !important;
-  box-shadow: 5px 5px 30px rgb(72, 72, 72) !important;
+  box-shadow: 5px 5px 30px rgb(229, 227, 227) !important;
 }
 
 .logoutbutton {
