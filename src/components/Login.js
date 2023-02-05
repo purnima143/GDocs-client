@@ -65,7 +65,7 @@ function Login() {
                 <div className='loginpage'>
                     <div className='content-box'>
                         <img src={Logo} alt="logo" />
-                        <h3 style={{ color: "white", paddingBottom: "10px" }}>Welcome to GDocs</h3>
+                        <h3 style={{ paddingBottom: "10px" }}>Welcome to GDocs</h3>
                         <GoogleLogin
                             clientId={clientId}
                             className="loginbutton"
