@@ -166,7 +166,7 @@
 }
 
 .inputarea {
-  width: 50% !important;
+  width: 50%;
   border: 1px solid lightgrey;
   border-radius: 7px;
   padding: 0 10px;
