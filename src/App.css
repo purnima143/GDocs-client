@@ -22,7 +22,6 @@
   border: none !important;
   box-shadow: 2px 2px 4px lightgrey;
   background-color: #f5f5f5;
-  display: flex;
   justify-content: center;
   position: sticky !important;
   top: 3rem;
