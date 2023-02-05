@@ -25,7 +25,6 @@ function Login() {
         localStorage.setItem('email', res.profileObj?.email)
         localStorage.setItem('username', res.profileObj?.name)
         localStorage.setItem('pic', res.profileObj?.imageUrl)
-
         axios.post(baseURL, { 'email': res.profileObj?.email })
             .then(response => { console.log(response) })
             .then(error => { console.log(error) })
@@ -39,21 +38,9 @@ function Login() {
     const logOut = () => {
         localStorage.clear('email')
         localStorage.clear('username')
-
+        localStorage.clear('pic')
         setProfile({});
     };
-    const routeChange = () => {
-        let path = `/home`;
-        navigate(path);
-    }
-    // useEffect(() => {
-    //     if (Object.keys(profile).length !== 0) {
-
-    //         console.log("hyyyyyyyyyyyyyyyyyyyyyyyy", profile)
-    //         localStorage.setItem('email', profile?.email)
-    //         localStorage.setItem('username', profile?.name)
-    //     }
-    // }, [profile])
 
     const logOutbutton = <GoogleLogout clientId={clientId} buttonText="Log out" onLogoutSuccess={logOut} className="logoutbutton" />
     return (

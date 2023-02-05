@@ -44,80 +44,82 @@ function Home({ logOutbutton, profile }) {
         setEmail(myemail);
         setName(myname);
         setPic(pic);
-    }, []);
+    }, [email]);
 
     useEffect(() => {
         getMydata();
-    }, []);
+    }, [email]);
 
     return (
-        <div className="home">
-            <div className="header" >
-                <Container className="form-container p-0">
-                    <div className="logo-header">
-                        <img src={Logo} alt="GDocs" />
-                        <h2>GDocs</h2>
-                    </div>
-                    <div className="header-right">
+        <>
+            <div className="home">
+                <div className="header" >
+                    <Container className="form-container p-0">
+                        <div className="logo-header">
+                            <img src={Logo} alt="GDocs" />
+                            <h2>GDocs</h2>
+                        </div>
+                        <div className="header-right">
 
-                        {logOutbutton}
-                        <OverlayTrigger
-                            key='bottom'
-                            placement='bottom'
-                            overlay={
-                                <Tooltip id={`tooltip-bottom`}>
-                                    Hi, {name}
-                                </Tooltip>
-                            }
-                        >
-                            <img src={pic} alt="" className="profilepic" />
-                        </OverlayTrigger>
-                    </div>
+                            {logOutbutton}
+                            <OverlayTrigger
+                                key='bottom'
+                                placement='bottom'
+                                overlay={
+                                    <Tooltip id={`tooltip-bottom`}>
+                                        Hi, {name}
+                                    </Tooltip>
+                                }
+                            >
+                                <img src={pic} alt="" className="profilepic" />
+                            </OverlayTrigger>
+                        </div>
 
+                    </Container>
+                </div>
+                <Form.Group className="form-box container mt-4">
+
+                    <Form.Control
+                        type="email"
+                        placeholder="+ Enter filename"
+                        onChange={(e) => setFileName(e.target.value)}
+                        className="inputarea"
+                    />
+
+                    <Button color="primary" className="px-4" onClick={routeChange}>
+                        Create Document
+                    </Button>
+
+                </Form.Group>
+                <Container className="mt-4 table" >
+
+                    <Row className="document-row top-row m-2 bold">
+                        <Col>My Documents</Col>
+                        <Col lg="3">Created at</Col>
+                    </Row>
+                    {fileData.map((item) => {
+                        const { _id, fileName, createdAt } = item;
+
+                        return (
+                            <React.Fragment key={_id}>
+                                <Row
+                                    onClick={() => handleClick(fileName, _id)}
+                                    className="document-row"
+                                    style={{ fontSize: "14px" }}
+                                    key={_id}
+                                >
+                                    <Col>
+                                        <img src={Logo} alt="GDocs" style={{ width: "32px" }} />
+                                        {fileName}
+                                    </Col>
+                                    <Col lg="3">{moment(createdAt).calendar()}</Col>
+                                </Row>
+                            </React.Fragment>
+                        );
+                    })}
                 </Container>
             </div>
-            <Form.Group className="form-box container mt-4">
-
-                <Form.Control
-                    type="email"
-                    placeholder="+ Enter filename"
-                    onChange={(e) => setFileName(e.target.value)}
-                    className="inputarea"
-                />
-
-                <Button color="primary" className="px-4" onClick={routeChange}>
-                    Create Document
-                </Button>
-
-            </Form.Group>
-            <Container className="mt-4 table" >
-
-                <Row className="document-row top-row m-2 bold">
-                    <Col>My Documents</Col>
-                    <Col lg="3">Created at</Col>
-                </Row>
-                {fileData.map((item) => {
-                    const { _id, fileName, createdAt } = item;
-
-                    return (
-                        <React.Fragment key={_id}>
-                            <Row
-                                onClick={() => handleClick(fileName, _id)}
-                                className="document-row"
-                                style={{ fontSize: "14px" }}
-                                key={_id}
-                            >
-                                <Col>
-                                    <img src={Logo} alt="GDocs" style={{ width: "32px" }} />
-                                    {fileName}
-                                </Col>
-                                <Col lg="3">{moment(createdAt).calendar()}</Col>
-                            </Row>
-                        </React.Fragment>
-                    );
-                })}
-            </Container>
-        </div>
+        </>
     );
 }
 
