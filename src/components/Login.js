@@ -40,6 +40,7 @@ function Login() {
         localStorage.clear('username')
         localStorage.clear('pic')
         setProfile({});
+        window.location.reload()
     };
 
     const logOutbutton = <GoogleLogout clientId={clientId} buttonText="Log out" onLogoutSuccess={logOut} className="logoutbutton" />
